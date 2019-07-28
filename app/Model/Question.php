@@ -18,4 +18,8 @@ class Question extends Model
         $this->attributes['title'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
+
+    public function bodyLimit(){
+        return Str::limit($this->attributes['body'], 100);
+    }
 }
