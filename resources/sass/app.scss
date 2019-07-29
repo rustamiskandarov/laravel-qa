@@ -6,3 +6,18 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.answers{
+  border: 1px solid transparent;
+  padding: 3px 5px;
+}
+.answers-exist{
+  border: 1px solid $green;
+  color: $green;
+}
+.answers-right{
+  border: 1px solid $green;
+  color: white;
+  background-color: $green;
+}

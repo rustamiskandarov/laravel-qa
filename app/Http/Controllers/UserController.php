@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Question;
+use App\User;
 use Illuminate\Http\Request;
 
-class QuestionController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user')->latest()->paginate(10);
-        return view('questions.index', compact('questions'));
+        //
     }
 
     /**
@@ -42,10 +41,10 @@ class QuestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Question  $question
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show(User $user)
     {
         //
     }
@@ -53,10 +52,10 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Question  $question
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question $question)
+    public function edit(User $user)
     {
         //
     }
@@ -65,10 +64,10 @@ class QuestionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Question  $question
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -76,10 +75,10 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Question  $question
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy(User $user)
     {
         //
     }
