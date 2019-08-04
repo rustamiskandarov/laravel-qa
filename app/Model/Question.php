@@ -9,12 +9,13 @@ use Illuminate\Support\Str;
 
 /**
  * @property mixed answers
+ * @property mixed user_id
  * @property mixed created_at
  * @property mixed best_answer_id
  */
 class Question extends Model
 {
-    protected $fillable = ['title', 'body'];
+    protected $fillable = ['title', 'body', 'views'];
 
     public function user()
     {
@@ -34,7 +35,7 @@ class Question extends Model
 
     public function getUrlAttribute()
     {
-        return route('questions.show', $this->id);
+        return route('question.show', $this->slug);
     }
 
     public function getCreateDateAttribute()
@@ -48,11 +49,14 @@ class Question extends Model
         if ($this->answers > 0) {
             if ($this->best_answer_id) {
                 return "answers-right";
-            } else {
-                return "answers-exist";
             }
-        } else {
-            return "";
+            return "answers-exist";
         }
+        return "";
+
+    }
+
+    public function getHtmlAttribute(){
+        return \Parsedown::instance()->text($this->body);
     }
 }
