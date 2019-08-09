@@ -21,6 +21,15 @@ class Answer extends Model
         return \Parsedown::instance()->text($this->body);
     }
 
+    public function getCreateDateAttribute()
+    {
+        //return $this->created_at->format("d/m/Y H:i:s");
+        return $this->created_at->diffForHumans();
+    }
+
+    /**
+     * запускаеться при создании обекта Answer и добавляет в question в поле answers_count +1
+     */
     public static function boot(){
         parent::boot();
         static::created(function ($answers){

@@ -9,8 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * @property mixed id
-
+ * @property mixed id*@property mixed email
  */
 class User extends Authenticatable
 {
@@ -54,5 +53,11 @@ class User extends Authenticatable
 
     public function answers(){
         return $this->hasMany(Answer::class, 'answer_id');
+    }
+
+    public function getAvatarAttribute(){
+        $email = $this->email;
+        $size = 32;
+        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d="  . "&s=" . $size;
     }
 }
