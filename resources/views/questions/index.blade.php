@@ -15,7 +15,7 @@
                                 <div class="media mb-2">
                                     <div class="media-left flex-column mr-3">
                                         <div class="flex-column"><div class="text-center">{{$item->votes}}</div><div class="text-center"><small>Votes</small></div> </div>
-                                        <div class="flex-column answers {{$item->status}}"><div class="text-center">{{$item->answers}}</div><div class="text-center"><small>Answers</small></div> </div>
+                                        <div class="flex-column answers {{$item->status}}"><div class="text-center">{{$item->answers_count}}</div><div class="text-center"><small>Answers</small></div> </div>
                                         <div class="flex-column"><div class="text-center">{{$item->views}}</div><div class="text-center"><small>Views</small></div></div>
                                     </div>
                                     <div class="media-body">

@@ -3,15 +3,16 @@
 namespace App\Model;
 
 use App\User;
+use App\Model\Answer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**
- * @property mixed answers
  * @property mixed user_id
  * @property mixed created_at
  * @property mixed best_answer_id
+ * @property mixed answers_count
  */
 class Question extends Model
 {
@@ -46,7 +47,7 @@ class Question extends Model
 
     public function getStatusAttribute()
     {
-        if ($this->answers > 0) {
+        if ($this->answers_count > 0) {
             if ($this->best_answer_id) {
                 return "answers-right";
             }
@@ -58,5 +59,9 @@ class Question extends Model
 
     public function getHtmlAttribute(){
         return \Parsedown::instance()->text($this->body);
+    }
+
+    public function answers(){
+        return $this->hasMany(Answer::class);
     }
 }
